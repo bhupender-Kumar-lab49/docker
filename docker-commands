@@ -1,0 +1,71 @@
+docker build -t localhost:5000/employeeservice .
+docker push localhost:5000/employeeservice
+docker run -p 8080:8080 springio/gs-spring-boot-docker
+
+
+to get status 
+minikube status 
+
+
+to start minikube 
+minikube start 
+
+to delete all pods 
+kubectl delete --all pods  
+
+to get pods 
+kubectl get pods 
+
+
+port forward from service 
+kubectl port-forward svc/employeeservice 9090:80
+
+
+kubernates get all (service,deployment,pods etc)
+kubectl get all
+
+--to check logs 
+
+kubectl logs employeeservice-7459bddb67-c79mw
+
+to delete secret 
+kubectl delete secret name
+
+to create secret
+
+
+kubectl get service
+
+kubectl apply -f .\service.yaml
+
+to remove images 
+
+docker image rm localhost:5000/employeeservice
+
+build the docker image 
+docker build -t localhost:5000/employeeservice .
+
+
+to delete all 
+ kubectl delete --all all
+
+
+ to enable minikube to use minikube docker enviorment 
+ minikube -p minikube docker-env | Invoke-Expression
+
+
+ minikube start 
+
+  docker pull localhost:5000/alpine
+
+
+ docker run -d -p 5000:5000 --restart=always --name registry -v C:\Users\bhupender.kumar\dockerregistry\auth:/auth -e "REGISTRY_AUTH=htpasswd" -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"  -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd -v C:\Users\bhupender.kumar\dockerregistry\certs:/certs -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt   -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key registry:2
+
+
+
+to delete all images unclaimed by container 
+docker image prune -a
+
+
+
+
