@@ -71,4 +71,47 @@ sudo cp /certificates/domain.crt /etc/docker/certs.d/10.0.2.15:5000/ca.crt
 
 sudo service docker reload
 
+sudo docker run -d  -p 5000:5000 --restart=always --name registry -v /auth:/auth -e "REGISTRY_AUTH=htpasswd"   -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"  -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd -v /certificates:/certificates -e REGISTRY_HTTP_TLS_CERTIFICATE=/certificates/domain.crt -e REGISTRY_HTTP_TLS_KEY=/certificates/domain.key registry:2
+
+
+
+sudo mkdir -p /etc/docker/certs.d/10.0.2.15:5000
+
+sudo cp /certificates/domain.crt /etc/docker/certs.d/10.0.2.15:5000/ca.crt
+
+sudo service docker reload
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-reg
+spec:
+  containers:
+  - name: employee
+    image: 10.0.2.15:5000/employee
+  imagePullSecrets:
+  - name: regcred
+
+
+
+openssl req -new -key certtificates/domain.pem \
+    -subj "/CN=10.0.2.15" \
+    -addext "subjectAltName = DNS:10.0.2.15" \
+    -out certs/domain.csr \
+    -config certs/domain.txt
+    
+    
+    
+    openssl req -new -sha256 -key domain.key -subj "/C=IN/ST=CA/O=LAB49/CN=10.0.2.15" -reqexts SAN -config <(cat /etc/ssl/openssl.cnf <(printf "[SAN]\nsubjectAltName=DNS:10.0.2.15,DNS:10.0.2.15")) -out domain.csr
+    
+    
+     openssl req -in domain.csr -text -noout
+
+
+
+
+
+kubectl create secret docker-registry regcred --docker-server=10.0.2.15 --docker-username=testuser --docker-password=testpassword --docker-email=bhupender.kumar@iongroup.com
+
 
