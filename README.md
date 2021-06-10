@@ -34,3 +34,19 @@ Steps :
 14) username:testuser
 15) password:testpassword 
 16) Done !!! 
+
+
+
+for ubantu 
+
+sudo docker run  -p 5000:5000 --restart=always --name registry -v /auth:/auth -e "REGISTRY_AUTH=htpasswd"   -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"  -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd -v /certificates:/certificates -e REGISTRY_HTTP_TLS_CERTIFICATE=/certificates/domain.crt -e REGISTRY_HTTP_TLS_KEY=/certificates/domain.key registry:2
+
+
+
+sudo mkdir -p /etc/docker/certs.d/10.0.2.15:5000
+
+sudo cp /certificates/domain.crt /etc/docker/certs.d/10.0.2.15:5000/ca.crt
+
+sudo service docker reload
+
+
