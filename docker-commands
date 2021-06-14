@@ -69,3 +69,143 @@ docker image prune -a
 
 
 
+
+
+
+-- commands to resolve the kubectl or microk8s docker private repository x509 certificate issue 
+
+
+
+
+1(650  microk8s start & microk8s.inspect
+  651  sudo iptables -P FORWARD ACCEPT
+  652  microk8s start & microk8s.inspect
+  653  microk8s start & microk8s.inspect & microk8s.status
+  654  microk8s status
+  655  containerd config default > /etc/containerd/config.toml
+  656  cd /etc/containerd/
+  657  vi config.toml 
+  658  microk8s status
+  659  microk8s.inspect
+  660  microk8s.status
+  661  vi  /var/snap/microk8s/current/args/containerd-template.toml
+  662  microk8s.status
+  663  microk8s start
+  664  vi  /var/snap/microk8s/current/args/containerd-template.toml
+  665  microk8s start
+  666  microk8s.status
+  667  microk8s.inspect
+  668  df -h
+  669  microk8s.reset
+  670  microk8s status
+  671  sudo snap remove microk8s
+  672  sudo snap install microk8s
+  673* sudo snap get microk8s 
+  674  sudo snap install microk8s --classic
+  675  microk8s.staus
+  676  k.status
+  677  kubectl status
+  678  microk8s
+  679  microk8s status
+  680  clear
+  681  microk8s stop
+  682  microk8s start 
+  683  microk8s staus
+  684  sudo snap alias microk8s.kubectl k
+  685  k status
+  686  sudo snap alias microk8s m
+  687  m status
+  688  cd
+  689  cd kube/
+  690  k apply -f pod.yml 
+  691  k get pods
+  692  k kubectl get service -n private-reg
+  693  k  get service -n private-reg
+  694  k  get service 
+  695  vi service.yml
+  696  vi pod.yml 
+  697  k delete --all all
+  698  k get pods
+  699  clear
+  700  k apply -f pod.yml 
+  701  vi service.yml 
+  702  vi httpdservice.yml
+  703  k create -f service.yml 
+  704  ll
+  705  k create -f httpdservice.yml 
+  706  k get svc
+  707  curl 1.2.4.120
+  708  curl -i  1.2.4.120
+  709  curl 10.0.2.15:80
+  710  curl 10.0.2.15:8080
+  711  curl 10.0.2.15:8086
+  712  curl 10.152.183.210
+  713  curl -i 1.2.4.114
+  714  k get pods
+  715  k get service
+  716  k delete --all all
+  717  history -> history.txt
+  718  history_ 
+  
+ ) 
+ 
+ 
+ second 
+  638  docker run hello-world
+  639  sudo service docker start
+  640  docker run hello-world
+  641  sudo systemctl unmask docker
+  642  sudo systemctl start docker
+  643  docker
+  644  docker run hello-world
+  645  su
+  646  pa55word
+  647  microk8s.inspect
+  648  microk8s status
+  649  sudo journalctl -u snap.microk8s.daemon-kubelite
+  650  sudo systemctl restart snap.microk8s.daemon-containerd.service
+  651  vi var/snap/microk8s/current/args/containerd
+  652  vi /var/snap/microk8s/current/args/containerd
+  653  microk8s inspect
+  654  microk8s status
+  655  microk8s inspect
+  656  systemctl status snap.microk8s.daemon-kubelet
+  657  sudo snap install microk8s --classic --edge
+  658  vi /var/snap/microk8s/current/args/kubelet
+  659  clear
+  660  microk8s stop 
+  661  start
+  662  microk8s start
+  663  sudo snap alias microk8s.kubectl k
+  664  sudo microk8s.status
+  665  sudo snap info microk8s
+  666  sudo snap alias microk8s.kubectl kubectl
+  667  k create deployment nginx --image=nginx
+  668  clear
+  669  k get events -w
+  670  microk8s.ctr --debug images pull -u 10.0.2.15:5000/employee --skip-verify 10.0.2.15:5000/employee 
+  671  microk8s.ctr --debug images pull -u employee --skip-verify 10.0.2.15:5000/employee 
+  672  microk8s.ctr --debug images pull -u employee --skip-verify 10.0.2.15:5000/employee:latest
+  673  docker logout 10.0.2.15:5000
+  674  docker login 10.0.2.15:5000
+  675  microk8s.ctr --debug images pull -u employee --skip-verify 10.0.2.15:5000/employee:latest
+  676  microk8s.ctr --debug images pull -u testuser --skip-verify 10.0.2.15:5000/employee:latest
+  677  cp /etc/docker/certs.d/10.0.2.15\:5000/ca.crt /etc/ssl/certs/
+  678  update-ca-certificates
+  679  k get pods
+  680  k delete --all all
+  681  cd kube/
+  682  microk8s stop && microk8s start
+  683  k get events -w
+  684  k delete secrets 
+  685  k delete secrets --name regcred
+  686  k delete secrets regcred
+  687  k get secrets
+  688  kubectl create secret docker-registry regcred --docker-server=10.0.2.15:5000 --docker-username=testuser --docker-password=testpassword --docker-email=test@test.com
+  689  k  create secret docker-registry regcred --docker-server=10.0.2.15:5000 --docker-username=testuser --docker-password=testpassword --docker-email=test@test.com
+  690  k delete --all all
+  691  k get events -w
+  692  history
+
+
+copy ca cert certificate
