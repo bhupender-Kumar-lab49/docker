@@ -115,3 +115,12 @@ openssl req -new -key certtificates/domain.pem \
 kubectl create secret docker-registry regcred --docker-server=10.0.2.15 --docker-username=testuser --docker-password=testpassword --docker-email=bhupender.kumar@iongroup.com
 
 
+
+to run registry ui from command line 
+
+
+
+ocker run -d  -p 80:80 --restart=always --name registryui -e "REGISTRY_HOST=docker-registry" -e "REGISTRY_PORT=5000" -e "REGISTRY_PROTOCOL=https" -e "SSL_VERIFY=false" -e "ALLOW_REGISTRY_LOGIN=true" parabuzzle/craneoperator:latest
+
+
+
